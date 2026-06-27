@@ -73,7 +73,7 @@ Engineering · SIEM · Incident Response · Network Security · IOC analysis
 
 ## 📫 Reach me
 - 📧 kriskennesaw@gmail.com
-- 💼 LinkedIn: *add your profile link here*
+- 💼 [LinkedIn](https://www.linkedin.com/in/kris-jones-965824252)
 
 <sub>All projects are for defensive security research and education. Tools are
 designed to observe and analyze — never to attack. Deploy only on infrastructure
