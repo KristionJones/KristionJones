@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sentinel-honeypot"
+version = "1.0.0"
+description = "Multi-port low-interaction network honeypot with a live SOC dashboard and IOC export."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Kristion Jones" }]
+keywords = ["honeypot", "security", "soc", "threat-intelligence", "iocs", "blue-team"]
+dependencies = ["Flask>=3.0,<4.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov>=5.0"]
+geo = ["geoip2>=4.7"]
+
+[project.scripts]
+honeypot = "honeypot.cli:main"
+
+[tool.setuptools]
+packages = ["honeypot"]
+
+[tool.setuptools.package-data]
+honeypot = ["templates/*.html", "static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

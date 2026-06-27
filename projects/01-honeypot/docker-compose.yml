@@ -1,0 +1,18 @@
+services:
+  honeypot:
+    build: .
+    container_name: sentinel-honeypot
+    restart: unless-stopped
+    ports:
+      # host:container — expose the dashboard and a few emulated services.
+      - "8080:8080"     # dashboard + JSON API
+      - "2222:2222"     # emulated SSH
+      - "2323:2323"     # emulated Telnet
+      - "8888:8888"     # emulated HTTP
+    volumes:
+      - honeypot-data:/app/data
+    # Override ports/services without rebuilding:
+    # command: ["--ports", "2222,2323,8888,2121", "--dashboard-port", "8080", "--db", "/app/data/honeypot.db"]
+
+volumes:
+  honeypot-data:
