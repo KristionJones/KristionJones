@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Honeypot Threat Dashboard</title>
+<style>
+  :root{
+    --bg:#0a0e16; --panel:#111827; --panel2:#0f1623; --line:#1f2a3a;
+    --txt:#e5edf5; --muted:#7d8da3; --accent:#22d3ee; --accent2:#a855f7;
+    --danger:#ef4444; --ok:#22c55e; --warn:#f59e0b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 600px at 70% -10%,#16233a 0,var(--bg) 55%);
+    color:var(--txt);font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+  header{padding:22px 28px;border-bottom:1px solid var(--line);display:flex;
+    align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  h1{margin:0;font-size:20px;letter-spacing:.5px}
+  h1 .dot{color:var(--accent)}
+  .sub{color:var(--muted);font-size:12px;margin-top:4px}
+  .live{font-size:12px;color:var(--ok);display:flex;align-items:center;gap:7px}
+  .pulse{width:9px;height:9px;border-radius:50%;background:var(--ok);
+    box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:p 1.8s infinite}
+  @keyframes p{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}}
+  main{padding:24px 28px;max-width:1300px;margin:0 auto}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));
+    border:1px solid var(--line);border-radius:14px;padding:18px}
+  .card .k{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:1px}
+  .card .v{font-size:30px;font-weight:700;margin-top:8px}
+  .card .v.accent{color:var(--accent)} .card .v.danger{color:var(--danger)}
+  .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-top:18px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:18px}
+  @media(max-width:900px){.grid,.grid3{grid-template-columns:1fr}}
+  .panel{background:linear-gradient(180deg,var(--panel),var(--panel2));
+    border:1px solid var(--line);border-radius:14px;padding:18px}
+  .panel h2{margin:0 0 14px;font-size:13px;color:var(--muted);
+    text-transform:uppercase;letter-spacing:1.5px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px}
+  th{color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--panel)}
+  tr:hover td{background:#0d1422}
+  .tag{font-size:10.5px;padding:2px 8px;border-radius:999px;border:1px solid var(--line)}
+  .tag.pub{color:var(--danger);border-color:#5b1c1c}
+  .tag.priv{color:var(--warn);border-color:#5b441c}
+  .scroll{max-height:420px;overflow:auto}
+  .bar{height:9px;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  .barrow{display:grid;grid-template-columns:130px 1fr 40px;gap:10px;align-items:center;
+    margin:9px 0;font-size:12px}
+  .barrow .lbl{color:var(--txt);overflow:hidden;text-overflow:ellipsis}
+  .barrow .num{color:var(--muted);text-align:right}
+  code{color:var(--accent)}
+  footer{color:var(--muted);font-size:11px;text-align:center;padding:26px}
+  .empty{color:var(--muted);font-size:13px;padding:30px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Honeypot <span class="dot">/</span> Threat Intelligence Dashboard</h1>
+    <div class="sub">Low-interaction sensor &middot; captures attacker activity, credentials &amp; payloads</div>
+  </div>
+  <div class="live"><span class="pulse"></span> live &middot; auto-refresh 5s</div>
+</header>
+<main>
+  <section class="cards" id="cards"></section>
+
+  <div class="grid">
+    <div class="panel">
+      <h2>Attack timeline</h2>
+      <canvas id="timeline" height="110"></canvas>
+    </div>
+    <div class="panel">
+      <h2>Targeted services</h2>
+      <canvas id="services" height="110"></canvas>
+    </div>
+  </div>
+
+  <div class="grid3">
+    <div class="panel"><h2>Top attacker IPs</h2><div id="topip"></div></div>
+    <div class="panel"><h2>Top usernames tried</h2><div id="topuser"></div></div>
+    <div class="panel"><h2>Top passwords tried</h2><div id="toppass"></div></div>
+  </div>
+
+  <div class="panel" style="margin-top:18px">
+    <h2>Live event feed</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr>
+          <th>Time (UTC)</th><th>Service</th><th>Source IP</th><th>Port</th>
+          <th>Class</th><th>User</th><th>Pass</th><th>Payload</th>
+        </tr></thead>
+        <tbody id="feed"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+<footer>
+  Built for defensive security research &middot; sensor never executes attacker input
+</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>

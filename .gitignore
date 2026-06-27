@@ -1,0 +1,28 @@
+# Runtime data (regenerate with the attack simulator)
+honeypot-dashboard/data/
+**/honeypot.db
+**/events.jsonl
+*.db
+
+# Malware samples — NEVER commit real samples; EICAR also trips AV on clone
+malware-analysis/samples/*
+!malware-analysis/samples/README.md
+malware-analysis/reports/*.report.json
+
+# Detection engine output
+detection-engineering/parser/*.json
+detection-engineering/**/alerts.json
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp

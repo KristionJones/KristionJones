@@ -1,0 +1,32 @@
+title: SSH Credential Brute-Force / Password Spraying
+id: 8a3f1c4e-1f2a-4c0b-9d77-honeypot-ssh-bf01
+status: experimental
+description: >
+  Detects a high volume of failed SSH authentications from a single source
+  address, indicative of brute-force or password-spraying activity. Tuned
+  against the honeypot's SSH sensor and standard Linux auth.log.
+author: Kristion Jones
+date: 2026/06/27
+references:
+  - https://attack.mitre.org/techniques/T1110/
+logsource:
+  product: linux
+  service: auth
+detection:
+  selection:
+    message|contains:
+      - 'Failed password for'
+      - 'authentication failure'
+  timeframe: 5m
+  condition: selection | count() by src_ip > 5
+fields:
+  - src_ip
+  - user
+falsepositives:
+  - Misconfigured automation / backup jobs reusing stale credentials
+  - Users repeatedly mistyping passwords
+level: high
+tags:
+  - attack.credential_access
+  - attack.t1110
+  - attack.t1110.001
