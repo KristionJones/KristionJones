@@ -1,0 +1,4 @@
+# Core sensor + dashboard use ONLY the Python standard library — nothing required.
+# PyYAML is optional and only needed to load config.yaml (otherwise built-in
+# defaults are used).
+PyYAML>=6.0

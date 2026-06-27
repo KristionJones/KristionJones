@@ -1,0 +1,26 @@
+# Honeypot sensor configuration.
+# Ports are intentionally high so the sensor runs without root privileges.
+# To capture real internet scans on the standard ports, redirect them, e.g.:
+#   sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 2222
+#   sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+
+bind_address: "0.0.0.0"
+read_timeout: 5      # seconds to wait for the client to send data
+max_bytes: 8192      # cap on captured payload size per connection
+
+services:
+  - name: SSH
+    port: 2222
+    banner: "SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5\r\n"
+
+  - name: HTTP
+    port: 8080
+    banner: ""
+
+  - name: Telnet
+    port: 2323
+    banner: "Ubuntu 18.04 LTS\r\nlogin: "
+
+  - name: FTP
+    port: 2121
+    banner: "220 (vsFTPd 3.0.3)\r\n"
