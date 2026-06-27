@@ -27,6 +27,15 @@ scanners look for the **bolded keywords** — keep them.
 - Authored a **YARA** ruleset and analyst report templates mapped to the
   **MITRE ATT&CK** framework; documented a safe REMnux/FLARE VM analysis lab.
 
+### Phishing Email Analyzer — *Python, Email Security, SPF/DKIM/DMARC*
+- Built a tool that parses raw `.eml` emails and produces a weighted **phishing
+  risk score** by validating **SPF/DKIM/DMARC**, detecting sender spoofing and
+  **look-alike/homoglyph domains**, and flagging malicious links and dangerous
+  attachments (executables, double extensions, macro documents).
+- Automatically extracts **indicators of compromise** (sender domain, origin IP,
+  URLs, attachment hashes) for blocking and threat hunting — replicating SOC
+  phishing-triage workflow. Validated against benign and malicious test samples.
+
 ### Detection Engineering — Log Parsing & Sigma Rules — *Python, Sigma, MITRE ATT&CK*
 - Built a log-based **detection engine** that correlates honeypot and Linux
   `auth.log` events into prioritized, **ATT&CK-mapped** alerts (brute force,
@@ -55,6 +64,10 @@ PE parsing, IOC + YARA). *Skills: Malware Analysis · Reverse Engineering
 **Detection Engineering with Sigma** — Log correlation engine + Sigma rules for
 SOC detections. *Skills: SIEM · Detection Engineering · Sigma · Incident
 Response*
+
+**Phishing Email Analyzer** — `.eml` triage tool scoring phishing risk via
+SPF/DKIM/DMARC and link/attachment analysis. *Skills: Email Security · Phishing
+Analysis · SPF/DKIM/DMARC · IOC analysis*
 
 ---
 

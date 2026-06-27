@@ -49,14 +49,24 @@ spray), plus portable **Sigma** rules convertible to Splunk/Elastic/Sentinel.
 
 ---
 
+### 🎣 [Phishing Email Analyzer](phishing-analyzer)
+Analyzes a raw `.eml` email and scores phishing risk — the exact triage a SOC
+analyst runs on reported emails: **SPF/DKIM/DMARC** checks, sender-spoofing and
+**look-alike domain** detection, malicious-link and dangerous-attachment
+analysis, and **IOC** extraction. Safe by design (never opens links or files).
+
+`Python` · `Email Security` · `SPF/DKIM/DMARC` · `Phishing Triage` · `IOC analysis`
+
+---
+
 ## 🧩 How the projects fit together
 ```
-  Honeypot  ──collects──▶  attack telemetry (events.jsonl)
-                                   │
-   Malware analysis  ──produces──▶ IOCs + YARA rules
-                                   │
-                                   ▼
-        Detection Engineering  ──turns telemetry + IOCs into──▶  ATT&CK-mapped alerts
+  Honeypot ──┐ attack telemetry
+  Phishing  ──┤ reported emails  ├──▶  IOCs + malware samples
+  analyzer    │                  │
+              ▼                  ▼
+       Malware analysis ──▶ Detection Engineering ──▶ ATT&CK-mapped alerts
+         (IOCs + YARA)        (Sigma rules)
 ```
 One small **end-to-end blue-team pipeline**: collect → analyze → detect.
 

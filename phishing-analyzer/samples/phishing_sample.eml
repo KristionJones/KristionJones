@@ -1,0 +1,38 @@
+Return-Path: <billing@account-secure-mail.top>
+Received: from mail.account-secure-mail.top (mail.account-secure-mail.top [185.220.101.42])
+	by mx.victim.com with ESMTP id 4abc123
+	for <kris@victim.com>; Mon, 27 Jun 2026 09:14:22 +0000 (UTC)
+Authentication-Results: mx.victim.com;
+	spf=fail (sender IP is 185.220.101.42) smtp.mailfrom=account-secure-mail.top;
+	dkim=fail header.d=account-secure-mail.top;
+	dmarc=fail action=quarantine header.from=micros0ft.com
+From: "Microsoft Account Team" <billing@account-secure-mail.top>
+Reply-To: <recover@mail.ru>
+To: kris@victim.com
+Subject: Urgent: Your Microsoft account will be suspended within 24 hours
+Date: Mon, 27 Jun 2026 09:14:20 +0000
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="BOUNDARY42"
+
+--BOUNDARY42
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Dear Customer,</p>
+<p>We detected <b>unusual activity</b> on your account. You must
+<a href="http://micros0ft-account.top/login/verify.php">verify your identity</a>
+immediately or your account will be suspended within 24 hours.</p>
+<p>Click here to confirm your password:
+<a href="http://185.220.101.42/secure/office365">https://login.microsoftonline.com</a></p>
+<p>Microsoft Account Team</p>
+</body></html>
+
+--BOUNDARY42
+Content-Type: application/octet-stream; name="Account_Statement.pdf.exe"
+Content-Disposition: attachment; filename="Account_Statement.pdf.exe"
+Content-Transfer-Encoding: base64
+
+VGhpcyBpcyBub3QgYSByZWFsIGV4ZWN1dGFibGUgLSBkZW1vIHBheWxvYWQgZm9yIHRoZSBw
+aGlzaGluZyBhbmFseXplciBzYW1wbGUu
+
+--BOUNDARY42--

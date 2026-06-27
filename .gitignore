@@ -26,3 +26,5 @@ venv/
 .idea/
 .vscode/
 *.swp
+phishing-analyzer/report.json
+phishing-analyzer/*.report.json

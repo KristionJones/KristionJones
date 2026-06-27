@@ -1,0 +1,1 @@
+# phishing_analyzer.py is dependency-free (Python standard library only).

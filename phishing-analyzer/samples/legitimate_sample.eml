@@ -1,0 +1,23 @@
+Return-Path: <no-reply@github.com>
+Received: from out-1.smtp.github.com (out-1.smtp.github.com [192.30.252.192])
+	by mx.victim.com with ESMTPS id 7def456
+	for <kris@victim.com>; Mon, 27 Jun 2026 12:02:10 +0000 (UTC)
+Authentication-Results: mx.victim.com;
+	spf=pass (sender IP is 192.30.252.192) smtp.mailfrom=github.com;
+	dkim=pass header.d=github.com;
+	dmarc=pass action=none header.from=github.com
+From: "GitHub" <no-reply@github.com>
+Reply-To: <no-reply@github.com>
+To: kris@victim.com
+Subject: [GitHub] A new SSH key was added to your account
+Date: Mon, 27 Jun 2026 12:02:08 +0000
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>Hey there,</p>
+<p>A new SSH key was added to your GitHub account. If this was you, no action
+is needed. You can manage your keys in your
+<a href="https://github.com/settings/keys">account settings</a>.</p>
+<p>Thanks,<br>The GitHub Team</p>
+</body></html>
